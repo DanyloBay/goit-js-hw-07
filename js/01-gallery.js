@@ -1,7 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
-
 const galleryContainer = document.querySelector(".gallery");
+
 const galleryMarkup = createGalleryMakup(galleryItems);
 
 function createGalleryMakup(galleryItems) {
@@ -28,12 +28,18 @@ galleryContainer.addEventListener("click", onContainerGalleryClick);
 function onContainerGalleryClick(evt) {
   evt.preventDefault();
 
-  const targ = evt.target;
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
 
-  const isElGallery = targ.classlist.contains("gallery__link");
+  const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}">`);
 
-  //   if (!isElGallery) {
-  //     return;
-  //   }
-  console.log(isElGallery);
+  instance.show();
+
+  galleryContainer.addEventListener("keydown", (e) => {
+    if ((e.Code = "Escape")) {
+      instance.close();
+    }
+  });
 }
