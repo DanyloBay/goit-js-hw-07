@@ -25,10 +25,10 @@ function onContainerGalleryClick(evt) {
   if (evt.target.nodeName !== "IMG") {
     return;
   }
-
-  new SimpleLightbox(".gallery .gallery__item", {
-    captionsData: "alt",
-    captionPosition: "bottom",
-    captionDelay: 250,
-  });
 }
+
+new SimpleLightbox(".gallery .gallery__item", {
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 250,
+});
